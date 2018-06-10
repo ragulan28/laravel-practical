@@ -18,6 +18,9 @@
             $validateData = $request->validate([
                 'username' => 'required',
                 'password' => 'required'
+            ],[
+                'username.required' => 'No username',
+                'password.required' => 'No password'
             ]);
 
 

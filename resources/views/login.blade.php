@@ -5,6 +5,8 @@
 
 
 <form action="{{ url('login_post') }}" method="post">
+
+    {{--error message--}}
     @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
