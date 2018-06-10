@@ -2,8 +2,9 @@
 
     namespace App\Http\Controllers;
 
+    use App\Http\Requests\UserUpdateRequest;
     use App\User;
-    use Illuminate\Http\Request;
+    use App\UserDetail;
 
 
     class UserController extends Controller {
@@ -16,10 +17,10 @@
         }
 
 
-        public function user_update_post(Request $request, $id) {
+        public function user_update_post(UserUpdateRequest $request, $id) {
             $inputs = $request->input();
 
-            dd($inputs);
+            //dd($inputs);
 
             $firstName = $inputs["first_name"];
             $lastName = $inputs["last_name"];
@@ -27,17 +28,22 @@
             $address = $inputs["address"];
 
 
-            $user = new user();
+            //$user = new user();
+
+            $user = User::where('id', $id)->first();
+
             $user->first_name = $firstName;
             $user->last_name = $lastName;
-//            $user['userDetail']['age']=$age;
-//            $user['userDetail']['age']=$age;
-            $user->userDetail->age = $age;
-            $user->userDetail->address = $address;
-            $result = $user->where('id', $id)
-                            ->update();
+            $user->save();
 
-            dd($result);
+            $userDetail = UserDetail::firstOrCreate(
+                [
+                    'user_id' => $id],
+                [
+                    'age' => $age,
+                    'address' => $address
+                ]);
+
 
         }
     }

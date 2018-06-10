@@ -3,6 +3,18 @@
 <head></head>
 <body>
 <form action="{{ url('user_update_post/'.$user->id) }}" method="post">
+
+    {{--error message--}}
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     {{ csrf_field() }}
 
     <label for="first_name">First name</label>
@@ -15,10 +27,10 @@
     <input type="text" id="username" name="username" value="{{ $user->username }}" readonly/>
     <br>
     <label for="age">Age</label>
-    <input type="text" id="age" name="age" value="{{ $user['userDetail']['age'] }}"/>
+    <input type="text" id="age" name="age" value="{{ isset($user->userDetail->age)?$user->userDetail->age:"" }}"/>
     <br>
     <label for="address">Address</label>
-    <input type="text" id="address" name="address" value="{{ $user['userDetail']['address'] }}"/>
+    <input type="text" id="address" name="address" value="{{ isset($user->userDetail->address)?$user->userDetail->address:"" }}"/>
     <br>
     <input type="submit" value="Update"/>
 </form>
