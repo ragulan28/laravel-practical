@@ -20,7 +20,7 @@
     <label for="address">Address</label>
     <input type="text" id="address" name="address" value="{{ $user['userDetail']['address'] }}"/>
     <br>
-    <input type="submit" value="Update">
+    <input type="submit" value="Update"/>
 </form>
 </body>
 </html>

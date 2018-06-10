@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\RegisterRequest;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -11,7 +12,10 @@ class RegistrationController extends Controller
         return view('registration');
     }
 
-    public function registration_post(Request $request) {
+    public function registration_post(RegisterRequest $request) {
+
+
+
         $inputs=$request->input();
         $firstName = $inputs["first_name"];
         $lastName = $inputs["last_name"];
