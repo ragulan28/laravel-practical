@@ -3,7 +3,6 @@
     namespace App\Http\Controllers;
 
     use App\User;
-    use App\UserDetail;
     use Illuminate\Http\Request;
 
 
@@ -21,6 +20,24 @@
             $inputs = $request->input();
 
             dd($inputs);
-            // Not Complete Yet
+
+            $firstName = $inputs["first_name"];
+            $lastName = $inputs["last_name"];
+            $age = $inputs["age"];
+            $address = $inputs["address"];
+
+
+            $user = new user();
+            $user->first_name = $firstName;
+            $user->last_name = $lastName;
+//            $user['userDetail']['age']=$age;
+//            $user['userDetail']['age']=$age;
+            $user->userDetail->age = $age;
+            $user->userDetail->address = $address;
+            $result = $user->where('id', $id)
+                            ->update();
+
+            dd($result);
+
         }
     }

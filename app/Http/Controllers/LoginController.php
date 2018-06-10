@@ -13,6 +13,14 @@
         }
 
         public function login_post(Request $request) {
+
+
+            $validateData = $request->validate([
+                'username' => 'required',
+                'password' => 'required'
+            ]);
+
+
             $inputs = $request->input();
 
             $username = $inputs["username"];
