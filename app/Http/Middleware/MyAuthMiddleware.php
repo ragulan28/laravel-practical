@@ -20,9 +20,9 @@ class MyAuthMiddleware
             return redirect('/logina');
         }
 
-        if(Auth::check()){
-            return redirect('/home');
-        }
+//        if(Auth::check()){
+//            return redirect('/home');
+//        }
 
 
         return $next($request);
