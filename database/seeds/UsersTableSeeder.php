@@ -15,8 +15,8 @@
                 [
                     'first_name' => "ragulan",
                     'last_name' => "ragulan1",
-                    'username' => "ragul",
-                    'password' => bcrypt('ragul'),
+                    'username' => "1",
+                    'password' => bcrypt('1'),
                     'created_at'=>Carbon::now(),
                 ], [
                     'first_name' => "w",
